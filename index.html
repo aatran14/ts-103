@@ -37,7 +37,7 @@ greet(42); // error: type 'number' not assignable to 'string'</code></pre>
 
 <p>Simply, it was a migration tool for massive codebases, designed for folks who were used to writing in JavaScript, and steer them into a world where there is safety. Alice can now make a change to the knowledge base and know if it broke Bob's tool.</p>
 <p>Ah, but there's a catch. It's unreasonable to migrate the entire codebase from JavaScript into TypeScript. 
-  Folks can opt-in to using <code>any</code>.</p>
+  Folks need an option to opt-out of annotating. This puts us in an awkward situation.</p>
 
   <h2>1.2 The Deadly Sins</h2>
   <pre><code>any</code></pre>
@@ -62,6 +62,7 @@ greet(42); // error: type 'number' not assignable to 'string'</code></pre>
   Type guards: f(x: unknown): x is Foo</code>
   
   If the arbitrary function returns true, you can treat <code>x</code> as type <code>Foo</code></pre>
+  <p>And the list goes on.</p>
 <script src="highlight.js"></script>
 </body>
 </html>
