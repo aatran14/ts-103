@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ts-103</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <h1>ts-103</h1>
+  <p>I think all good engineers should know about type-checking. Even as the world moves away from actually coding, there are some important lessons to learn. I think this essay is about the "spirit" of typescript and why so many great people went through the pain of writing it.</p>
+  <p>We are in an era where a lot of builders will have never coded. This is the story of why the Kobe Bryant of the web, used to wake up at 5AM to train.</p>
+  <p>This was originally a talk by Sarah "Slim" Lim. I missed ts-102. This is ts-103.</p>
+    <h1>1.</h1>
+  <h2>1.1 The Beginning</h2>
+  <p>In ts-101, Slim notes on the origins of Typescript, in particular, that it was designed to migrate large scale JavaScript systems and retyped into Typescript.</p>
+  <p>Why? Large companies, namely Microsoft, were operating on millions of lines of JavaScript, but nobody could "fix" or "build" anything. On a local scale, folks could write small JavaScript programs, but it was easy to make one change and somehow break something many files away. Every new line of code was basically a bug.</p>
+  <p>Enter Anders Hejlsberg (who build C# and Turbo Pascal).</p>
+  <p>Anders worked on a neat idea. What if you could add types to JavaScript in a way that is optional? You do not rewrite. You annotate the existing infrastructure. In essence, Javascript is valid TypeScript, so get everyone to just annotate the JavaScript to be typed. As t approaches infinity, the whole system goes from .js to .ts!</p>
+  <p>What does this look like?</p>
+  <pre><code>// plain JavaScript - no types, no safety
+function greet(name) {
+  return "Hello, " + name;
+}
+
+greet(42); // no error. JavaScript doesn't care.</code></pre>
+
+  <pre><code>// the same function, annotated with TypeScript
+function greet(name: string): string {
+  return "Hello, " + name;
+}
+
+greet(42); // error: type 'number' not assignable to 'string'</code></pre>
+
+<p>Simply, it was a migration tool for massive codebases, designed for folks who were used to writing in JavaScript, and steer them into a world where there is safety. Alice can now make a change to the knowledge base and know if it broke Bob's tool.</p>
+<p>Ah, but there's a catch. It's unreasonable to migrate the entire codebase from JavaScript into TypeScript. 
+  Folks can opt-in to using <code>any</code>.</p>
+
+  <h2>1.2 The Deadly Sins</h2>
+  <pre><code>any</code></pre>
+  <p><code>any</code> is the original sin. It allows a person to ignore type. It can be assigned to anything. Quite literally, it's the absence of typing.</p>
+
+  <p><code>any</code> in the form of a Pragma?</p>
+
+  <pre><code>@ts-ignore</code></pre>
+  <p><code>any</code> in the form of a Flag?</p>
+
+  <pre><code>--suppressImplicitAnyIndexErrors</code></pre>
+
+  <p>Of course, there are more evils out there:</p>
+  <pre>
+  Casts: <code>x</code> as <code>Foo</code>
+  
+  Tell the TypeScript to treat value <code>x</code> as type <code>foo</code></pre>
+  
+  <p>Here, a lesser evil: Ever been scared of lying?</p>
+  <p>Write a function that checks at runtime whether <code>x</code> is a type <code>Foo</code>.</p>
+  <pre>
+  Type guards: f(x: unknown): x is Foo</code>
+  
+  If the arbitrary function returns true, you can treat <code>x</code> as type <code>Foo</code></pre>
+<script src="highlight.js"></script>
+</body>
+</html>

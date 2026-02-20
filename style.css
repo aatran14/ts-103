@@ -1,0 +1,33 @@
+body {
+  margin-left: 50px;
+  margin-right: 50%;
+  padding: 0 1rem;
+  font-family: Georgia, serif;
+  line-height: 1.6;
+  color: #222;
+}
+
+pre {
+  background: #f5f5f5;
+  padding: 1rem;
+  margin-left: 0;
+  margin-right: 0;
+  border-radius: 4px;
+}
+
+code {
+  color: #222;
+  font-family: Menlo, Consolas, monospace;
+  font-size: 0.75rem;
+}
+
+.hl-keyword { color: #7b2d8b; }
+.hl-string  { color: #9e4a2a; }
+.hl-comment { color: #6a7a3a; }
+
+.hl-type {
+  color: #1a7a6a;
+  border: 2px solid #e05252;
+  border-radius: 3px;
+  padding: 0 3px;
+}
